@@ -19,12 +19,12 @@ import javax.servlet.http.HttpServletResponse;
 @WebFilter("/ValidateUserFilter")
 public class ValidateUserFilter implements Filter {
 
-    /**
-     * Default constructor. 
-     */
-    public ValidateUserFilter() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor.
+	 */
+	public ValidateUserFilter() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see Filter#destroy()
@@ -36,29 +36,27 @@ public class ValidateUserFilter implements Filter {
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
+			ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
 		PrintWriter out = response.getWriter();
-		
+
 		String userName = request.getParameter("name");
 		String password = request.getParameter("password");
 		HashMap<String, String> newMap = new HashMap<String, String>();
-		newMap.put("Ria@gmail.com","qwerty");
-		newMap.put("Dipika@gmail.com","asdfgh");
-		newMap.put("Neha@gmail.com","zxcvbn");
-		if(newMap.containsKey(userName)&& password.equals(newMap.get(userName)))
-		{	
+		newMap.put("Ria@gmail.com", "qwerty");
+		newMap.put("Dipika@gmail.com", "asdfgh");
+		newMap.put("Neha@gmail.com", "zxcvbn");
+		if (newMap.containsKey(userName) && password.equals(newMap.get(userName))) {
 			// pass the request along the filter chain
-			chain.doFilter(request, response);	
+			chain.doFilter(request, response);
+		} else {
+			response.setContentType("text/html");
+			out.println("Login Unsuccessful! Incorrect Username or password.");
+			request.getRequestDispatcher("UserLogin.jsp").include(request, response);
 		}
-		else
-		{
-		response.setContentType("text/html");
-		out.println("Login Unsuccessful! Incorrect Username or password.");		
-		request.getRequestDispatcher("UserLogin.jsp").include(request, response);	
-		}		
-		
+
 	}
 
 	/**

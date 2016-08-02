@@ -1,7 +1,7 @@
 package com.bitwise.UserDetails;
 
 public class BasicDetails {
-	String name,email,dob,gender;
+	String name,email,bdate,gender;
 	public String getName() {
 		return name;
 	}
@@ -14,11 +14,12 @@ public class BasicDetails {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getDob() {
-		return dob;
+	
+	public String getBdate() {
+		return bdate;
 	}
-	public void setDob(String dob) {
-		this.dob = dob;
+	public void setBdate(String bdate) {
+		this.bdate = bdate;
 	}
 	public String getGender() {
 		return gender;
@@ -26,12 +27,6 @@ public class BasicDetails {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public long getPhone() {
-		return phone;
-	}
-	public void setPhone(long phone) {
-		this.phone = phone;
-	}
-	long phone;
+	
 
 }

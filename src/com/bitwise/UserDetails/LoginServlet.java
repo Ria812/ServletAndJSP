@@ -25,8 +25,7 @@ public class LoginServlet extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		HttpSession ses = request.getSession(true);
 		String sessionId = ses.getId();
@@ -34,17 +33,17 @@ public class LoginServlet extends HttpServlet {
 		ses.setAttribute("name", request.getParameter("name"));
 		ses.setAttribute("sid", sessionId);
 		PrintWriter out = response.getWriter();
-	
+
 		if (ses.isNew()) {
 			out.print("Hello!");
 			out.flush();
 			request.getRequestDispatcher("BasicInfo.jsp").include(request, response);
-		} 
+		}
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+			IOException {
 
 		doGet(request, response);
 	}
